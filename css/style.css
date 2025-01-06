@@ -45,6 +45,13 @@ body, html {
     border-radius: 50%;
 }
 
+.focal-point.cue {
+    background-color: #4caf50; /* Change to green for 0.5 seconds */
+    transform: scale(1.5); /* Slight size increase */
+    transition: all 0.5s ease; /* Smooth transition for visual effect */
+}
+
+
 .controls {
   position: absolute; /* Move controls out of the flow */
   top: 10px; /* Position relative to the top */

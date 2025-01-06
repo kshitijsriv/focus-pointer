@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const startButton = document.getElementById('startButton');
   const timerDisplay = document.getElementById('timer');
+  const focalPoint = document.querySelector('.focal-point');
   let timer;
   let startTime;
 
@@ -15,10 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function startFocusSession() {
     startTime = Date.now();
     startButton.textContent = 'End Focus Session';
-    timer = setInterval(updateTimer, 1000);
+    timer = setInterval(() => {
+      updateTimer();
+      triggerVisualCue(); // Check for visual cue
+    }, 1000);
 
-    // Show the focal point
-    const focalPoint = document.querySelector('.focal-point');
     focalPoint.classList.add('active');
   }
 
@@ -27,8 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     startButton.textContent = 'Start Focus Session';
     timerDisplay.textContent = '00:00';
 
-    // Hide the focal point
-    const focalPoint = document.querySelector('.focal-point');
     focalPoint.classList.remove('active');
   }
 
@@ -37,6 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const minutes = Math.floor(elapsedTime / 60000);
     const seconds = Math.floor((elapsedTime % 60000) / 1000);
     timerDisplay.textContent = `${padZero(minutes)}:${padZero(seconds)}`;
+  }
+
+  function triggerVisualCue() {
+    const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+    if (elapsedTime % 30 === 0) { // Every 30 seconds
+      focalPoint.classList.add('cue');
+      setTimeout(() => focalPoint.classList.remove('cue'), 500); // Remove cue after 0.5 seconds
+    }
   }
 
   function padZero(number) {
