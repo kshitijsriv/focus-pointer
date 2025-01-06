@@ -1,0 +1,67 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f4f8;
+  font-family: Arial, sans-serif;
+  position: relative; /* Allow positioning of the top corner elements */
+}
+
+.container {
+  text-align: center;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.focal-point.active {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: #ff6347;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: pulse 2s infinite; /* Smooth pulsing effect */
+}
+
+.focal-point {
+    display: none; /* Initially hidden */
+    width: 20px;
+    height: 20px;
+    background-color: #ff6347;
+    border-radius: 50%;
+}
+
+.controls {
+  position: absolute; /* Move controls out of the flow */
+  top: 10px; /* Position relative to the top */
+  right: 10px; /* Position relative to the right */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Align elements to the right */
+}
+
+#startButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+#timer {
+  font-size: 18px;
+  color: #333;
+}
