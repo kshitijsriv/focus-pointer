@@ -43,6 +43,12 @@ body, html {
     height: 20px;
     background-color: #ff6347;
     border-radius: 50%;
+    position: absolute; /* Allow dragging anywhere on the screen */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for the element's size */
+    animation: pulse 2s infinite; /* Smooth pulsing effect */
+    cursor: grab; /* Indicates draggable */
 }
 
 .focal-point.cue {
